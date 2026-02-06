@@ -1,8 +1,20 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import Projects from '@components/Projects.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-  <Welcome />
+  <main>
+    <h1 class="text-center text-4xl m-4">Antonio Genaro</h1>
+    <h2 class="text-2xl m-4 text-center">Software developer</h2>
+    <p>
+      About me: I am a software developer with a passion for creating efficient
+      and scalable applications. I have experience in various programming
+      languages and frameworks, and I enjoy learning new technologies to stay
+      up-to-date in the ever-evolving tech industry.
+    </p>
+    <section>
+      <Projects />
+    </section>
+  </main>
 </Layout>
