@@ -25,19 +25,21 @@ const { Content } = await render(project);
   <div class="flex gap-4">
     <div class="mt-4">
       <Image
-        transition:name={project.id}
+        transition:name={'project-image-' + project.id}
         src={img}
         alt={title}
-        class="w-48 h-auto rounded-lg"
+        class="h-auto w-48 rounded-lg"
       />
     </div>
 
-    <div class="text-left m-4">
-      <h1 class="text-6xl mb-4">{title}</h1>
-      <p class="text-2xl">{description}</p>
+    <div class="m-4 text-left">
+      <h1 class="mb-4 font-mono text-6xl">
+        {title}
+      </h1>
+      <h2 class="font-serif text-2xl font-extralight italic">{description}</h2>
     </div>
   </div>
-  <div class="mt-4">
+  <div class="prose dark:prose-invert mt-4">
     <Content />
   </div>
 </Layout>
