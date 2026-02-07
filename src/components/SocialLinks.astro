@@ -1,0 +1,28 @@
+---
+const socialLinks = [
+  {
+    name: 'GitHub',
+    url: 'https://github.com/antoniogenaro',
+    icon: 'fab fa-github',
+  },
+  {
+    name: 'Twitter',
+    url: 'https://x.com/antoniogenaro8',
+    icon: 'fab fa-twitter',
+  },
+];
+---
+
+<div>
+  <h3 class="font-mono text-2xl font-light">Where am I</h3>
+  <div class="flex gap-4 py-4">
+    {
+      socialLinks.map((link) => (
+        <a href={link.url} class="font-mono text-sm font-light hover:underline">
+          <i class={link.icon} />
+          {link.name}
+        </a>
+      ))
+    }
+  </div>
+</div>

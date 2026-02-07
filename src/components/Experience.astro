@@ -1,0 +1,75 @@
+---
+const experiences = [
+  {
+    name: 'Orquest',
+    url: 'https://orquest.com',
+    from: new Date('2023-03'),
+  },
+  {
+    name: 'Wabi',
+    from: new Date('2022-03'),
+    to: new Date('2023-02'),
+  },
+  {
+    name: 'Coderty',
+    url: 'https://coderty.com',
+    from: new Date('2016-04'),
+    to: new Date('2022-03'),
+  },
+];
+
+const formatDate = (date: Date) => {
+  const options: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: 'short',
+  };
+  return date.toLocaleDateString(undefined, options);
+};
+
+const formatDuration = (from: Date, to?: Date) => {
+  const endDate = to ? to : new Date();
+  const years = endDate.getFullYear() - from.getFullYear();
+  const months = endDate.getMonth() - from.getMonth();
+
+  let duration = '';
+  if (years > 0) {
+    duration += `${years} year${years > 1 ? 's' : ''}`;
+  }
+  if (months > 0) {
+    if (duration) duration += ' ';
+    duration += `${months} month${months > 1 ? 's' : ''}`;
+  }
+  return duration || 'Less than a month';
+};
+---
+
+<div>
+  <h3 class="font-mono text-2xl font-light">My experience</h3>
+  <div class="mt-4 flex flex-col gap-4">
+    {
+      experiences.map((experience) => (
+        <div class="rounded-lg border border-neutral-700 p-4 transition-colors hover:border-indigo-600 hover:bg-indigo-600 hover:text-neutral-200 dark:border-neutral-300">
+          <h4 class="font-mono text-xl font-light">
+            {experience.url ? (
+              <a href={experience.url} class="hover:underline">
+                {experience.name}
+              </a>
+            ) : (
+              experience.name
+            )}
+          </h4>
+          <p class="flex items-center gap-2 font-sans text-sm font-light">
+            <i class="far fa-clock" />
+            <span>{formatDuration(experience.from, experience.to)}</span>
+          </p>
+          <p class="font-sans text-xs font-extralight italic">
+            <span class="capitalize">{formatDate(experience.from)}</span> -
+            <span class="capitalize">
+              {experience.to ? formatDate(experience.to) : 'Present'}
+            </span>
+          </p>
+        </div>
+      ))
+    }
+  </div>
+</div>
